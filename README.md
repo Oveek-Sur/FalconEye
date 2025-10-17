@@ -147,7 +147,7 @@ The launcher will verify presence of required tools and notify if anything is mi
 * Recon tools: `amass`, `subfinder`, `sublist3r`, `theharvester` (optional)
 * Web analysis: `httpx`, `wappalyzer`
 * Scanning & vuln: `naabu`, `subjs`, `gau`, `nmap`, `searchsploit`/`exploitdb`
-
+## The tool will automatically tell you if something or any tool is misssing then please manually install them.
 ---
 
 ## 📜 License & Contact
