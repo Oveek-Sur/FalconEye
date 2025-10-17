@@ -71,11 +71,12 @@ sudo apt install -y python3 python3-pip python3-venv git curl wget tar
 ```bash
 # Clone repository
 git clone https://github.com/Oveek-Sur/FalconEye.git
-cd FalconEye
+
 
 # Create and activate virtual environment
 python3 -m venv venv
 source venv/bin/activate
+cd FalconEye
 ```
 
 > When active, your shell prompt shows `(venv)`.
