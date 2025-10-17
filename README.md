@@ -1,25 +1,162 @@
-🦅 FalconEye — Oveek Sur⭐ OverviewFalconEye is a unified, CLI-driven intelligence and vulnerability platform designed to streamline reconnaissance, network discovery, and initial vulnerability validation. By aggregating outputs from multiple industry-standard tools into a single, actionable report, FalconEye reduces the need to memorize many individual commands and significantly speeds up the reconnaissance-to-exploitation workflow for security researchers, penetration testers, and bug bounty hunters. 🕵️🎯 PurposeFalconEye’s primary goals are:Consolidate: Bring powerful reconnaissance and scanning utilities into a single, consistent command-line interface. 🔗Actionable Intelligence: Produce clear, prioritized, and actionable intelligence that accelerates triage and remediation. 💡Reduce Friction: Reduce the operational friction of switching between disparate tools and output formats. ⚙️💼 Professional DescriptionFalconEye acts as an orchestration framework for reconnaissance and early-stage vulnerability assessment. It automates the collection, normalization, and enrichment of target data — transforming raw tool outputs into structured, high-value reports. The platform emphasizes repeatability, clarity, and prioritization: discovered assets and findings are grouped, annotated with context (e.g., CVSS where applicable), and linked to relevant exploit references when available.Key Professional Benefits:Efficiency: Run multi-tool pipelines from a single interface to save time and reduce cognitive load. ⏱️Actionability: Reports are designed to be immediately useful for follow-up testing or remediation work. ⚡Traceability: Tool outputs are preserved and organized, enabling reproducibility and auditability of findings. 📂🛠️ Major Modules & Features1. 🌐 Deep Reconnaissance (CLI Report)Comprehensive attack surface mapping for a target domain or IP.Integrates subdomain discovery (amass, subfinder, sublist3r), historical URL harvesting (gau), JS asset enumeration (subjs), web technology identification (httpx/wappalyzer), DNS and WHOIS collection, and fast port discovery (naabu).Consolidates results into a human-readable CLI report suitable for triage or export.2. 📡 Professional Nmap ScanningProvides a curated Nmap interface with selectable scan profiles: Quick Scan, Full Scan (all 65,535 ports), Stealth (SYN), UDP, and Custom.Timing control (T0–T5) and profile presets for safer or more aggressive scans.Output parsed and normalized for downstream vulnerability checks.3. 🚨 Vulnerability Scanning & PrioritizationThe core engine for finding and prioritizing risk.Uses Nmap Scripting Engine (vuln category) to surface common service-level vulnerabilities and misconfigurations.Integrates with SearchSploit to map discovered services to potential public exploits.Presents findings in a CVSS-prioritized table to focus remediation on the highest risk items. 🎯⚙️ Setup and Installation GuideThis section provides a clear, step-by-step setup guide so you can get FalconEye running quickly. The instructions assume a Debian/Ubuntu-based environment. Adjust commands for other distributions as needed.1) Initial System UpdateBashsudo apt update && sudo apt upgrade -y
-2) Install Core DependenciesBashsudo apt install -y python3 python3-pip python3-venv git curl wget tar
-3) Clone and Activate Environment (Recommended)Bash# Clone the repository
+# 🦅 FalconEye — Oveek Sur
+
+## ⭐ Overview
+
+FalconEye is a unified, CLI-driven intelligence and vulnerability platform built to streamline reconnaissance, network discovery, and initial vulnerability validation. By aggregating outputs from multiple industry-standard tools into a single, actionable report, FalconEye reduces the need to memorize many individual commands and significantly accelerates the reconnaissance-to-exploitation workflow for security researchers, penetration testers, and bug bounty hunters.
+
+---
+
+## 🕵️‍♂️ Purpose
+
+FalconEye’s primary goals are:
+
+* **Consolidate:** Bring powerful reconnaissance and scanning utilities into a single, consistent command-line interface.
+* **Actionable Intelligence:** Produce clear, prioritized, and actionable intelligence that accelerates triage and remediation.
+* **Reduce Friction:** Minimize the operational overhead of switching between disparate tools and output formats.
+
+---
+
+## ⚙️ Professional Description
+
+FalconEye is an orchestration framework for reconnaissance and early-stage vulnerability assessment. It automates the collection, normalization, and enrichment of target data — transforming raw tool outputs into structured, high-value reports. The platform emphasizes repeatability, clarity, and prioritization: discovered assets and findings are grouped, annotated with contextual metadata (e.g., CVSS scores), and linked to relevant exploit references when available.
+
+**Key professional benefits:**
+
+* **Efficiency:** Run multi-tool pipelines from one interface to save time and reduce cognitive load.
+* **Actionability:** Reports are structured to be immediately useful for follow-up testing or remediation.
+* **Traceability:** Tool outputs are preserved and organized for reproducibility and auditing.
+
+---
+
+## 🛠️ Major Modules & Features
+
+### 1. 🌐 Deep Reconnaissance (CLI Report)
+
+* Full attack-surface mapping for domains or IPs.
+* Integrates: `amass`, `subfinder`, `sublist3r` (subdomains), `gau` (historical URLs), `subjs` (JS assets), `httpx`/`wappalyzer` (tech fingerprinting), DNS & WHOIS collection, and fast port discovery (`naabu`).
+* Outputs consolidated, human-readable CLI reports suitable for triage and export.
+
+### 2. 📡 Professional Nmap Scanning
+
+* Curated Nmap interface with selectable scan profiles: Quick, Full (0–65535), Stealth (SYN), UDP, and Custom.
+* Timing control (T0–T5) and preset profiles for safer or aggressive scanning.
+* Parsed and normalized output for downstream vulnerability checks.
+
+### 3. 🚨 Vulnerability Scanning & Prioritization
+
+* Uses Nmap Scripting Engine (vuln category) to identify common service-level vulnerabilities and misconfigurations.
+* Integrates with SearchSploit/ExploitDB to map services to potential public exploits.
+* Presents findings in a CVSS-prioritized table to focus remediation on highest-risk items.
+
+---
+
+## 🚀 Setup & Installation Guide
+
+**Target platform:** Debian/Ubuntu-based systems (adjust for other distros).
+
+### 1) System update
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+### 2) Install core dependencies
+
+```bash
+sudo apt install -y python3 python3-pip python3-venv git curl wget tar
+```
+
+### 3) Clone repo & create virtual environment (recommended)
+
+```bash
+# Clone repository
 git clone https://github.com/Oveek-Sur/FalconEye.git
 cd FalconEye
-# Create and activate a Python virtual environment
+
+# Create and activate virtual environment
 python3 -m venv venv
 source venv/bin/activate
-💡 When the environment is active your shell prompt should show (venv).4) Install or Place External Reconnaissance Binaries on PATHFalconEye leverages several external tools. Install the ones you need for full functionality and ensure they are in your PATH (for example /usr/local/bin).SubjsBash# Download latest subjs (Linux AMD64)
+```
+
+> When active, your shell prompt shows `(venv)`.
+
+### 4) Install or place external reconnaissance binaries on `PATH`
+
+FalconEye relies on several external tools. Install those you need and ensure they are accessible via `PATH` (e.g., `/usr/local/bin`). Example installations:
+
+**Subjs**
+
+```bash
 wget https://github.com/lc/subjs/releases/latest/download/subjs_$(curl -s https://api.github.com/repos/lc/subjs/releases/latest | grep tag_name | cut -d '"' -f4 | sed 's/v//')_linux_amd64.tar.gz
 tar xzf subjs_*_linux_amd64.tar.gz
 chmod +x subjs
 sudo mv subjs /usr/local/bin/
 subjs -h
-Gau (GetAllUrls)Bashwget https://github.com/lc/gau/releases/latest/download/gau_$(curl -s https://api.github.com/repos/lc/gau/releases/latest | grep tag_name | cut -d '"' -f4 | sed 's/v//')_linux_amd64.tar.gz
+```
+
+**Gau (GetAllUrls)**
+
+```bash
+wget https://github.com/lc/gau/releases/latest/download/gau_$(curl -s https://api.github.com/repos/lc/gau/releases/latest | grep tag_name | cut -d '"' -f4 | sed 's/v//')_linux_amd64.tar.gz
 tar xzf gau_*_linux_amd64.tar.gz
 chmod +x gau
 sudo mv gau /usr/local/bin/
 gau --version
-Naabu (fast port scanner)Bash# Naabu can be installed via snap, apt, or by building from source
+```
+
+**Naabu**
+
+```bash
 sudo apt update
 sudo apt install -y naabu
-Nmap & SearchSploitBashsudo apt install -y nmap exploitdb
-⚠️ Tip: If you prefer not to install some tools system-wide, place binaries inside the project folder and update PATH in your shell or in the FalconEye launcher script.5) Run FalconEyeFrom the FalconEye project directory with the virtual environment activated:Bashsudo python3 falconEye.py
-🚀 The script will check for required external tools and notify you if any are missing.📝 Notes & TroubleshootingPermissions: Some scans may require elevated privileges. Use sudo where necessary but avoid running unknown third-party scripts as root. 🔒Missing tools: If a recon module fails due to a missing binary, install the respective tool and re-run the module.Performance: On resource-constrained systems, prefer conservative Nmap timing (T0–T2) and smaller scan ranges.Network policy: Always have explicit authorization before scanning or testing external networks — unauthorized scanning may be illegal. ⚖️📦 DependenciesPython 3GitRecon Tools: amass, subfinder, sublist3r, theharvester (optional)Web Analysis: httpx, wappalyzerScanning & Vuln: naabu, subjs, gau, nmap, searchsploit / exploitdb📜 License & ContactSectionDetailLicenseThis project is licensed under the GNU General Public License v3.0 (GPL-3.0).ProjectFalconEyeAuthorOveek SurRepositoryhttps://github.com/Oveek-Sur/FalconEye
+# or follow ProjectDiscovery installation instructions
+```
+
+**Nmap & SearchSploit/ExploitDB**
+
+```bash
+sudo apt install -y nmap exploitdb
+```
+
+> Tip: You may keep binaries inside the project and update `PATH` locally if you prefer not to install system-wide.
+
+### 5) Run FalconEye
+
+```bash
+sudo python3 falconEye.py
+```
+
+The launcher will verify presence of required tools and notify if anything is missing.
+
+---
+
+## 📝 Notes & Troubleshooting
+
+* **Permissions:** Certain scans require elevated privileges. Use `sudo` only when necessary and avoid running untrusted scripts as root.
+* **Missing tools:** If a module fails because a binary is missing, install that tool and retry.
+* **Performance:** On low-resource systems, use conservative Nmap timings (T0–T2) and reduce scan ranges.
+* **Legal:** Always have explicit authorization before scanning or testing targets; unauthorized scanning may be illegal.
+
+---
+
+## 📦 Dependencies (summary)
+
+* Python 3
+* Git
+* Recon tools: `amass`, `subfinder`, `sublist3r`, `theharvester` (optional)
+* Web analysis: `httpx`, `wappalyzer`
+* Scanning & vuln: `naabu`, `subjs`, `gau`, `nmap`, `searchsploit`/`exploitdb`
+
+---
+
+## 📜 License & Contact
+
+* **License:** GNU General Public License v3.0 (GPL-3.0)
+* **Project:** FalconEye
+* **Author:** Oveek Sur
+* **Repository:** [https://github.com/Oveek-Sur/FalconEye](https://github.com/Oveek-Sur/FalconEye)
+
+
+
+
+
