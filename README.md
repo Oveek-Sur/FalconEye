@@ -4,7 +4,11 @@
 
 FalconEye is a unified, CLI-driven intelligence and vulnerability platform built to streamline reconnaissance, network discovery, and initial vulnerability validation. By aggregating outputs from multiple industry-standard tools into a single, actionable report, FalconEye reduces the need to memorize many individual commands and significantly accelerates the reconnaissance-to-exploitation workflow for security researchers, penetration testers, and bug bounty hunters.
 
+
 ---
+
+## 📜 The FalconEye Development Story: Human-Augmented AI Testing
+This project is a testament to the power of human oversight in complex AI-driven development. While the initial code base utilized the speed of multiple AI models (Gemini, ChatGPT, and Penetration Test GPT), the path to a stable, usable tool was defined entirely by rigorous human testing and engineering oversight.
 
 ## 🕵️‍♂️ Purpose
 
@@ -13,6 +17,9 @@ FalconEye’s primary goals are:
 * **Consolidate:** Bring powerful reconnaissance and scanning utilities into a single, consistent command-line interface.
 * **Actionable Intelligence:** Produce clear, prioritized, and actionable intelligence that accelerates triage and remediation.
 * **Reduce Friction:** Minimize the operational overhead of switching between disparate tools and output formats.
+*  **Verified Stability:** FalconEye is proven stable even against challenging targets.
+*   **Custom Control:** The user retains full control over speed and timeout profiles.
+*  **Zero Command Fatigue:** Achieve full-cycle reconnaissance without memorizing complex command-line syntax.
 
 ---
 
